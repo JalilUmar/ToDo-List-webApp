@@ -6,15 +6,15 @@ import TodoList from "./TodoList"
 
 const getTodo = async () => {
     try {
-        const data = await fetch("/api/todos", {
+        const getData = await fetch("/api/todos", {
             method: 'GET',
             cache: 'no-store'
         })
-        if (!data.ok) {
+        if (!getData.ok) {
             throw new Error('Failed to fetch data.')
         }
 
-        const result = await data.json()
+        const result = await getData.json()
 
         return result
     } catch (error) {
