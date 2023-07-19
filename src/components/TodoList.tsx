@@ -5,9 +5,33 @@ import { useState, useEffect } from "react"
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation"
+import { Todo } from "@/db/drizzle";
 
 
-export default function TodoList(Data: any) {
+const getTodo = async () => {
+    try {
+        const getData = await fetch("/api/todos", {
+            method: 'GET',
+            cache: 'no-store'
+        })
+        if (!getData.ok) {
+            throw new Error('Failed to fetch data.')
+        }
+
+        const result = await getData.json()
+
+        return result
+    } catch (error) {
+        console.log((error as { message: string }).message)
+    }
+
+}
+
+
+export default async function TodoList() {
+
+    const res = await getTodo()
+    const Data: Todo[] = res.data
     const router = useRouter()
     const [isCheck, setCheck] = useState([{}])
 
