@@ -29,11 +29,11 @@ const getTodo = async () => {
 
 export default async function GetAllTasks() {
     const res = await getTodo()
-
+    const data = res.data
 
     return (
         <>
-            <TodoList Data={res.data} />
+            <TodoList Data={data} />
         </>
 
     )
