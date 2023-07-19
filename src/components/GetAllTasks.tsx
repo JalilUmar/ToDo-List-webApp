@@ -6,7 +6,7 @@ import TodoList from "./TodoList"
 
 const getTodo = async () => {
     try {
-        const data = await fetch("http://127.0.0.1:3000/api/todos", {
+        const data = await fetch("/api/todos", {
             method: 'GET',
             cache: 'no-store'
         })
