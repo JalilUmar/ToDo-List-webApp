@@ -7,7 +7,7 @@ import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation"
 
 
-export default function TodoList({ Data }: any) {
+export default function TodoList(Data: any) {
     const router = useRouter()
     const [isCheck, setCheck] = useState([{}])
 
